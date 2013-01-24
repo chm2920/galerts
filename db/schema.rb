@@ -13,10 +13,16 @@
 
 ActiveRecord::Schema.define(:version => 20121225145439) do
 
-  create_table "alerts", :force => true do |t|
-    t.string   "title"
+  create_table "admins", :force => true do |t|
+    t.string   "adminname"
+    t.string   "password"
+    t.string   "level"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "alerts", :force => true do |t|
+    t.string "title"
   end
 
   create_table "alerts_users", :id => false, :force => true do |t|
@@ -26,10 +32,20 @@ ActiveRecord::Schema.define(:version => 20121225145439) do
 
   create_table "mails", :force => true do |t|
     t.integer  "alert_id"
-    t.text     "body"
+    t.string   "summary"
     t.datetime "received_at"
+    t.text     "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "run_logs", :force => true do |t|
+    t.string   "log_path"
+    t.string   "log_method"
+    t.string   "log_params"
+    t.string   "log_exception"
+    t.string   "log_remote_ip"
+    t.datetime "created_at"
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,48 @@
+<%= form_tag({:action => "index"}, {:id => "vbform"}) do %>	
+<table class="stdtable">
+	<thead>
+		<tr>
+			<th width="5%">ID</th>
+			<th width="80%">title</th>
+			<th width="15%">管理</th>
+		</tr>
+	</thead>
+	<%
+		if @alerts.length>0
+	%>
+	<tbody>
+	<%
+			@alerts.each do |alert|
+	%>
+		<tr>
+			<td><%= check_box_tag 'alert_ids[]', alert.id, false, :class => 'checker' %></td>
+			<td><%= alert.title %></td>
+			<td>
+				<a href="/admin/alerts/<%= alert.id %>">查看</a>|<%= link_to "删除", {:action => "destroy", :id => alert}, :confirm => "确定删除？", :method => "delete" %>
+			</td>
+		</tr>
+	<%
+			end
+	%>
+	</tbody>
+	<%
+		else
+	%>
+	<tbody>
+		<tr>
+			<td colspan="3" style="text-align:left;">&nbsp;还没有内容。</td>
+		</tr>
+	</tbody>
+	<%
+		end
+	%>
+</table>
+<div class="list-opts clearfix">
+	<div class="l">
+		<input type="button" name="selectAll" id="selectAll" value="全选">
+		<input type="button" name="selectOther" id="selectOther" value="反选">
+		<input type="submit" name="delete_all" id="delete_all" value="全部删除">
+	</div>
+	<%= will_paginate @alerts %>
+</div>
+<% end %>

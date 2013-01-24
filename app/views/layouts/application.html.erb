@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Galerts</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <title>GReader</title>
+  <%= stylesheet_link_tag    "main" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="Container">
+	<div id="Header" class="wapper">
+		<div class="logo">GReader</div>
+	</div>
+	<div id="Nav">
+		<ul class="nav wapper clearfix">
+			<li class="first">
+				<a href="/">首页</a>
+			</li>
+			<li>
+				<a href="/">关于</a>
+			</li>
+		</ul>
+	</div>
+	<div id="PageBody" class="wapper">
 <%= yield %>
-
+	</div>
+	<div id="Footer">
+		<div class="foot wapper clearfix">
+			<div class="l">GReader</div>
+			<div class="r">Copyright(c)2013 GReader All Rights Reserved</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>

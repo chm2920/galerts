@@ -1,0 +1,27 @@
+<table class="newtable">
+	<thead>
+		<tr>
+			<th colspan="2">查看</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2" class="blank"></td>
+		</tr>
+		<tr>
+			<td class="data_label">UID：</td>
+			<td class="data_ipt"><%= @user.uid %></td>
+		</tr>
+		<tr>
+			<td class="data_label">名称：</td>
+			<td class="data_ipt"><%= @user.name %></td>
+		</tr>
+		<tr>
+			<td class="data_label">关键词：</td>
+			<td class="data_ipt"><%= @alerts.map{|a|a.title}.join(', ') %></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="blank"></td>
+		</tr>
+	</tbody>
+</table>
