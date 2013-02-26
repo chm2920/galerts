@@ -10,10 +10,13 @@ Galerts::Application.routes.draw do
   match "admin_logout" => "account#logout"
   
   namespace :admin do
+    post "users/index"
     resources :users
     
+    post "alerts/index"
     resources :alerts
     
+    post "mails/index"
     resources :mails
     
     post "run_logs/index"

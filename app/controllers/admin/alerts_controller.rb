@@ -1,6 +1,9 @@
 class Admin::AlertsController < Admin::Backend
   
   def index
+    if !params[:alert_ids].nil?
+      Alert.destroy_all(["id in (?)", params[:alert_ids]])
+    end
     @alerts = Alert.paginate :page => params[:page], :per_page => 15, :order => "id desc"
   end
 
