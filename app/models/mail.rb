@@ -1,6 +1,6 @@
 class Mail < ActiveRecord::Base
   
-  attr_accessible :alert_id, :body, :received_at
+  attr_accessible :alert_id, :summary, :received_at, :body
   
   belongs_to :alert
   

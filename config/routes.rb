@@ -1,6 +1,9 @@
 Galerts::Application.routes.draw do
   
+  match "/init", :to => "open#new_user"
   post "/sub", :to => "open#subscribe"
+  match "/alerts", :to => "open#alerts"
+  match "/mails", :to => "open#mails"
   
     
   match "admin" => "account#login"

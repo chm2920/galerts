@@ -1,5 +1,16 @@
 class OpenController < ApplicationController
   
+  def new_user
+    @user = User.find_by_uid(params[:uid])
+    if @user.nil?
+      @user = User.new
+      @user.uid = params[:uid]
+      @user.name = params[:name]
+      @user.save
+    end
+    render :json => @user
+  end
+  
   def subscribe
     @user = User.find_by_uid(params[:uid])
     if @user.nil?
@@ -21,13 +32,22 @@ class OpenController < ApplicationController
   end
   
   def alerts
-    @user = User.find_by_uid(params[:id])
-    @alerts = @user.alerts
+    @user = User.find_by_uid(params[:uid])
+    if !@user.nil?
+      @alerts = @user.alerts
+    else
+      render :json => "{'result' : '-1'}"
+    end
   end
   
-  def mail
+  def mails
     @alert = Alert.find(params[:id])
-    @mail = @alert.mail
+    if !@alert.nil?
+      @mails = @alert.mails
+      render :json => @mails
+    else
+      render :json => "{'result' : '-1'}"
+    end
   end
   
 end
