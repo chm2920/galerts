@@ -9,12 +9,20 @@
 			<td colspan="2" class="blank"></td>
 		</tr>
 		<tr>
-			<td class="data_label">名称：</td>
-			<td class="data_ipt"><%= @alert.title %></td>
+			<td class="data_label">关键词：</td>
+			<td class="data_ipt"><%= @mail.alert.title %></td>
 		</tr>
 		<tr>
-			<td class="data_label">用户：</td>
-			<td class="data_ipt"><%= @users.map{|a|a.name + '|' + a.uid}.join(', ') %></td>
+			<td class="data_label">概要：</td>
+			<td class="data_ipt"><%= @mail.summary %></td>
+		</tr>
+		<tr>
+			<td class="data_label">received_at：</td>
+			<td class="data_ipt"><%= @mail.received_at.strftime("%Y-%m-%d") %></td>
+		</tr>
+		<tr>
+			<td class="data_label">内容：</td>
+			<td class="data_ipt"><%= @mail.body %></td>
 		</tr>
 		<tr>
 			<td colspan="2" class="blank"></td>

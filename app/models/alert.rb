@@ -24,8 +24,7 @@ class Alert < ActiveRecord::Base
       res.body
     else
       'failed'
-    end
-    
+    end    
   end
   
 end
