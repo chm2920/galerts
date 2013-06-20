@@ -1,3 +1,10 @@
+<%= form_for [:admin, @admin], :html => {:onsubmit => "return checkPassword()"} do |f| %>
+<table class="newtable">
+	<thead>
+		<tr>
+			<th colspan="2"><%= t %></th>
+		</tr>
+	</thead>
 	<tbody>
 		<tr>
 			<td colspan="2" class="blank"></td>
@@ -17,7 +24,7 @@
 		<tr>
 			<td class="data_label">确认密码：</td>
 			<td class="data_ipt">
-				<input type="password" value="" name="admin[password_confirm]" id="admin_password_confirm" />
+				<input type="password" value="" name="password_confirm" id="admin_password_confirm" />
 			</td>
 		</tr>
 		<tr>
@@ -30,3 +37,18 @@
 			<td colspan="2" class="blank"></td>
 		</tr>
 	</tbody>
+</table>
+<% end %>
+<script type="text/javascript">
+function checkPassword(){
+	if($('#admin_adminname').val().trim() == ''){
+		alert('请输入用户名!');
+		return false;
+	}
+	if($('#admin_password_confirm').val() != $('#admin_password').val()){
+		alert('两次输入的密码不一致。');
+		return false;
+	}
+	return true;
+}
+</script>

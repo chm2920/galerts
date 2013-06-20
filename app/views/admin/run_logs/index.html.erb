@@ -1,4 +1,16 @@
 <%= form_tag({:action => "index"}, {:id => "vbform"}) do %>	
+<div class="nav">
+	<div class="list-opts clearfix">
+		<%= will_paginate @run_logs %>
+		<div class="nav-links">
+			<input type="button" name="selectAll" id="selectAll" value="全选">
+			<input type="button" name="selectOther" id="selectOther" value="反选">
+			<input type="submit" name="delete_all" id="delete_all" value="全部删除">
+			<input type="button" name="clear_all" id="clear_all" value="清空">
+		</div>
+	</div>
+</div>
+<div class="main">
 <table class="stdtable">
 	<thead>
 		<tr>
@@ -47,15 +59,6 @@
 		end
 	%>
 </table>
-<div class="list-opts clearfix">
-	<div class="l">
-		<input type="button" name="selectAll" id="selectAll" value="全选">
-		<input type="button" name="selectOther" id="selectOther" value="反选">
-		<input type="submit" name="delete_all" id="delete_all" value="全部删除">
-		<input type="button" name="clear_all" id="clear_all" value="清空">
-	</div>
-	<%= will_paginate @run_logs %>
-</div>
 <% end %>
 <script>	
 $('#clear_all').click(function(e){
@@ -63,4 +66,36 @@ $('#clear_all').click(function(e){
 	e.stopPropagation();
 	location.href = "/admin/run_logs/clear";
 });
+
+$('.checker').click(function(e){
+	e.stopPropagation();
+});
+$('.stdtable td').click(function(e){
+	if(e.target.tagName != 'A'){
+		e.preventDefault();
+		e.stopPropagation();
+		var _c = $(this).parent().find('.checker');
+		_c.attr('checked', !!!$(_c).attr('checked'));
+	}
+});
+$('#selectAll').click(function(e){
+	e.preventDefault();
+	e.stopPropagation();
+	$('.checker').attr('checked', true);
+});
+$('#selectOther').click(function(e){
+	e.preventDefault();
+	e.stopPropagation();
+	$('.checker').each(function(index, elem){
+		$(elem).attr('checked', !$(elem).attr('checked'));
+	});
+});
+$('#delete_all').click(function(e){
+	e.stopPropagation();
+	if($('input:checked').length == 0){
+		alert("请选择批量处理的ID!");
+		return false;
+	}
+});
 </script>
+</div>

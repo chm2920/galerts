@@ -40,6 +40,7 @@ class AccountController < ApplicationController
   end
   
   def logout
+    session[:admin] = nil
     session[:admin_id] = nil
     redirect_to :action => 'login'
   end

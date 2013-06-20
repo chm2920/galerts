@@ -22,6 +22,19 @@ Galerts::Application.routes.draw do
     post "run_logs/index"
     get "run_logs/clear"
     resources :run_logs
+        
+    get "db/index"
+    
+    post "db/backup"
+    post "db/restore"
+    delete "db/destroy"
+    
+    get "db/sql"
+    post "db/sql"
+    
+    get "db/tables"
+    get "db/structure"
+    post "db/export_sql"
     
     resources :admins
   end

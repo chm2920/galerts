@@ -31,10 +31,10 @@ body{background:#FEFEFE;}
 .frame-top{position:relative;height:90px;}
 
 .nO{height:50px;}
-.nO-r{float:right;display:inline;padding:28px 40px 0 0;height:22px;line-height:22px;}
+.nO-r{float:right;display:inline;padding:28px 40px 0 0;height:22px;line-height:22px;color:#FFF;}
 .nO-r span{font-weight:bold;}
 .nO h1{margin:0 0 0 20px;}
-.nO h1 a{display:block;padding:16px 20px 0px;width:160px;font-size:18px;color:#222;}
+.nO h1 a{display:block;padding:16px 20px 0px;width:160px;font-size:18px;color:#FFF;}
 .nO h1 a:hover{text-decoration:none;}
 .sys-msg{position:absolute;top:20px;left:50%;margin-left:-60px;padding:4px 10px;width:100px;height:20px;line-height:20px;background:#FF0000;}
 
@@ -59,8 +59,6 @@ body{background:#FEFEFE;}
 .navtree ul li a:hover, .navtree ul li a.selected{background:#E8EAEB;}
 
 .frame-main-con{left:201px;right:0;margin-left:1px;background:#FFF;}
-.frame-main-con-nav{padding:20px 0 20px 40px;height:20px;line-height:20px;border-bottom:1px solid #DDD;font-size:14px;}
-.frame-main-con-nav a{margin:0 8px;font-size:14px;font-weight:normal;color:#333;}
-.frame-main-con-body{position:absolute;top:62px;bottom:0;left:0;right:0;z-index:1;overflow:auto;}
+.frame-main-con-body{position:absolute;top:2px;bottom:0;left:0;right:0;z-index:1;overflow:auto;}
 
 
