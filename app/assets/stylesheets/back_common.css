@@ -31,10 +31,10 @@ body{background:#FEFEFE;}
 .frame-top{position:relative;height:90px;}
 
 .nO{height:50px;}
-.nO-r{float:right;display:inline;padding:28px 40px 0 0;height:22px;line-height:22px;color:#FFF;}
+.nO-r{float:right;display:inline;padding:28px 40px 0 0;height:22px;line-height:22px;color:#333;}
 .nO-r span{font-weight:bold;}
 .nO h1{margin:0 0 0 20px;}
-.nO h1 a{display:block;padding:16px 20px 0px;width:160px;font-size:18px;color:#FFF;}
+.nO h1 a{display:block;padding:16px 20px 0px;width:160px;font-size:18px;color:#333;}
 .nO h1 a:hover{text-decoration:none;}
 .sys-msg{position:absolute;top:20px;left:50%;margin-left:-60px;padding:4px 10px;width:100px;height:20px;line-height:20px;background:#FF0000;}
 

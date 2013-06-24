@@ -7,6 +7,25 @@ class Admin::AlertsController < Admin::Backend
     @alerts = Alert.paginate :page => params[:page], :per_page => 15, :order => "id desc"
   end
 
+  def new
+    @alert = Alert.new
+  end
+  
+  def create
+    @alert = Alert.find_by_title(params[:alert][:title])
+    if !@alert.nil?
+      render :text => "<script>alert('Existed !');location.href='javascript:history.back(-1)';</script>"
+      return
+    end
+    @alert = Alert.new(params[:alert])
+    if @alert.save
+      @alert.post_remote
+      redirect_to [:admin, :alerts]
+    else
+      render :action => "new"
+    end
+  end
+
   def show
     @alert = Alert.find(params[:id])
     @users = @alert.users

@@ -6,7 +6,7 @@ class Alert < ActiveRecord::Base
   
   has_many :mails
   
-  def generate
+  def post_remote
     params = {}  
     params["q"] = self.title
     params["t"] = 7
@@ -16,15 +16,19 @@ class Alert < ActiveRecord::Base
     
     require 'net/http'
     uri = URI.parse("http://www.google.com/alerts/create")
+    puts "begin post #{self.title}"
     res = Net::HTTP.post_form(uri, params)
-    puts '##########'
     puts res.body
-    puts '##########'
-    if res.body.inclue("Google Alert Created")
-      res.body
-    else
-      'failed'
-    end    
+    begin
+      if res.body.to_s.include? ("Google Alert Created")        
+        MailLog.create(:info => "#{self.title} -- Google Alert Created")
+      else
+        MailLog.create(:info => "#{self.title} failed")
+      end
+    rescue
+      MailLog.create(:info => "#{self.title} post error")
+    end
+    puts "post end"
   end
   
 end

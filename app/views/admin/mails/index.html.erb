@@ -1,10 +1,19 @@
 <%= form_tag({:action => "index"}, {:id => "vbform"}) do %>	
+<div class="nav">
+	<div class="list-opts clearfix">
+		<%= will_paginate @mails %>
+		<input type="button" name="selectAll" id="selectAll" value="全选">
+		<input type="button" name="selectOther" id="selectOther" value="反选">
+		<input type="submit" name="delete_all" id="delete_all" value="全部删除">
+	</div>
+</div>
+<div class="main">
 <table class="stdtable">
 	<thead>
 		<tr>
 			<th width="5%">ID</th>
-			<th width="30%">关键词</th>
-			<th width="30%">概要</th>
+			<th width="20%">关键词</th>
+			<th>概要</th>
 			<th width="20%">received_at</th>
 			<th width="15%">管理</th>
 		</tr>
@@ -41,12 +50,38 @@
 		end
 	%>
 </table>
-<div class="list-opts clearfix">
-	<div class="l">
-		<input type="button" name="selectAll" id="selectAll" value="全选">
-		<input type="button" name="selectOther" id="selectOther" value="反选">
-		<input type="submit" name="delete_all" id="delete_all" value="全部删除">
-	</div>
-	<%= will_paginate @mails %>
 </div>
 <% end %>
+
+<script type="text/javascript">
+$('.checker').click(function(e){
+	e.stopPropagation();
+});
+$('.stdtable td').click(function(e){
+	if(e.target.tagName != 'A' && e.target.tagName != 'B'){
+		e.preventDefault();
+		e.stopPropagation();
+		var _c = $(this).parent().find('.checker');
+		_c.attr('checked', !!!$(_c).attr('checked'));
+	}
+});
+$('#selectAll').click(function(e){
+	e.preventDefault();
+	e.stopPropagation();
+	$('.checker').attr('checked', true);
+});
+$('#selectOther').click(function(e){
+	e.preventDefault();
+	e.stopPropagation();
+	$('.checker').each(function(index, elem){
+		$(elem).attr('checked', !$(elem).attr('checked'));
+	});
+});
+$('#delete_all').click(function(e){
+	e.stopPropagation();
+	if($('input:checked').length == 0){
+		alert("请选择批量处理的ID!");
+		return false;
+	}
+});
+</script>

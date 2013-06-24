@@ -12,15 +12,26 @@ Galerts::Application.routes.draw do
   match "admin_login_rst" => "account#login_rst"
   match "admin_logout" => "account#logout"
   
-  namespace :admin do
+  namespace :admin do    
+    resources :mails do
+      collection do
+        get :index
+      end
+    end
+    
+    resources :mail_logs do
+      collection do
+        get :clear
+        post :index
+        get :index
+      end
+    end
+    
     post "users/index"
     resources :users
     
     post "alerts/index"
     resources :alerts
-    
-    post "mails/index"
-    resources :mails
     
     post "run_logs/index"
     get "run_logs/clear"

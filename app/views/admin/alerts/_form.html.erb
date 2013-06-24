@@ -1,0 +1,39 @@
+<div class="nav">
+	<div class="list-opts">
+		<div class="nav-links">
+			<a href="/admin/alerts">关键词列表</a>
+			<a href="/admin/alerts/new">添加关键词</a>
+		</div>
+	</div>
+</div>
+<div class="main">
+<%= form_for [:admin, @alert] do |f| %>
+<table class="newtable">
+	<thead>
+		<tr>
+			<th colspan="2"><%= t %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2" class="blank"></td>
+		</tr>
+		<tr>
+			<td class="data_label">名称：</td>
+			<td class="data_ipt">
+				<%= f.text_field :title %>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td class="data_sbt">
+				<input type="submit" name="submit" value="提交" />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="blank"></td>
+		</tr>
+	</tbody>
+</table>
+<% end %>
+</div>

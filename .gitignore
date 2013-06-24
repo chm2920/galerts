@@ -17,3 +17,4 @@
 /config/config.yml
 /Gemfile.lock
 /db/backup/*
+/lib/tasks/*
