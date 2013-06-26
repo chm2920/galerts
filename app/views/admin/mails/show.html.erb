@@ -26,7 +26,7 @@
 		</tr>
 		<tr>
 			<td class="data_label">received_at：</td>
-			<td class="data_ipt"><%= @mail.received_at.strftime("%Y-%m-%d") %></td>
+			<td class="data_ipt"><%= @mail.received_at.strftime("%Y-%m-%d") if @mail.received_at %></td>
 		</tr>
 		<tr>
 			<td class="data_label">内容：</td>

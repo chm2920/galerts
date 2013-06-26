@@ -29,7 +29,7 @@
 			<td><%= check_box_tag 'mail_ids[]', mail.id, false, :class => 'checker' %></td>
 			<td><%= mail.alert.title %></td>
 			<td><%= mail.summary %></td>
-			<td><%= mail.received_at.strftime("%Y-%m-%d") %></td>
+			<td><%= mail.received_at.strftime("%Y-%m-%d") if mail.received_at %></td>
 			<td>
 				<a href="/admin/mails/<%= mail.id %>">查看</a>|<%= link_to "删除", {:action => "destroy", :id => mail}, :confirm => "确定删除？", :method => "delete" %>
 			</td>
